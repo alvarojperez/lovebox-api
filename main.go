@@ -11,6 +11,6 @@ func main() {
 	openDBConnection()
 	defer db.Close()
 
-	server := newApiServer(":8080")
+	server := newApiServer(":" + getEnvVariable("PORT"))
 	server.run()
 }
