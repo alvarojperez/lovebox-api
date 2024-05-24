@@ -6,7 +6,12 @@ import (
 )
 
 func (router *router) setupRoutes() {
+	router.HandleFunc("/health", healthCheckHandler)
 	router.HandleFunc("/read", readMessageHandler)
+}
+
+func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
 }
 
 func readMessageHandler(w http.ResponseWriter, r *http.Request) {
